@@ -74,7 +74,7 @@
   function parentRow(side) {
     var s = W[side];
     return '<div class="parents__row">' + parentName(s.father) + " · " + parentName(s.mother) +
-      '<span class="parents__rel">의 ' + esc(s.relation) + "</span><b class=\"parents__name\">" + esc(s.firstName) + "</b></div>";
+      '<span class="parents__rel">의 ' + esc(s.relation) + "</span><b class=\"parents__name\">" + esc(s.name) + "</b></div>";
   }
   function renderGreeting() {
     $("#greeting").innerHTML =

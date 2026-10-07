@@ -44,7 +44,9 @@ python -m http.server 8080
 ## GitHub Pages 배포
 
 1. 저장소 → **Settings → Pages**
-2. Source: **Deploy from a branch**, Branch: **main** / **(root)** → Save
-3. 1~2분 후 https://joojihwan.github.io/wedding-invitation/ 에서 확인
+2. Source: **Deploy from a branch**, Branch: **release** / **(root)** → Save
+3. 작업은 `dev`에서 하고, `release`로 PR을 머지하면 배포됩니다. 1~2분 후 https://joojihwan.github.io/wedding-invitation/ 에서 확인
 
 > 카카오톡은 미리보기를 캐시합니다. 메타 정보를 바꾼 뒤에는 [카카오 공유 디버거](https://developers.kakao.com/tool/debugger/sharing)에서 캐시를 초기화하세요.
+
+> GitHub Pages는 파일을 10분간 캐시합니다. `css/`, `js/` 파일을 수정해 배포할 때는 `index.html`의 `?v=` 숫자를 올려 주세요. 그래야 방문자 브라우저가 예전 파일을 계속 쓰지 않습니다.
