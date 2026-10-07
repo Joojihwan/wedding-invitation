@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>김민준 ♥ 이서연 결혼합니다</title>
+  <meta name="description" content="2027년 5월 15일 토요일 오후 12시 30분, 라온웨딩홀 3층 그랜드홀" />
+  <meta name="theme-color" content="#faf7f2" />
+
+  <!-- 카카오톡/SNS 링크 미리보기 (크롤러는 JS를 실행하지 않으므로 여기 직접 수정) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="김민준 ♥ 이서연 결혼합니다" />
+  <meta property="og:description" content="2027년 5월 15일 토요일 오후 12시 30분, 라온웨딩홀" />
+  <meta property="og:image" content="https://joojihwan.github.io/wedding-invitation/images/og.jpg" />
+  <meta property="og:url" content="https://joojihwan.github.io/wedding-invitation/" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💐</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="petals" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section id="cover" class="cover"></section>
+    <section id="greeting" class="section"></section>
+    <section id="calendar" class="section section--tint"></section>
+    <section id="gallery" class="section"></section>
+    <section id="location" class="section section--tint"></section>
+    <section id="account" class="section"></section>
+    <section id="share" class="section section--tint"></section>
+    <footer class="footer">Thank you for celebrating with us</footer>
+  </main>
+
+  <!-- 연락하기 모달 -->
+  <div id="contact-modal" class="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+      <button class="modal__close" data-close aria-label="닫기">&times;</button>
+      <h3 id="contact-title" class="modal__title">연락하기</h3>
+      <div id="contact-body"></div>
+    </div>
+  </div>
+
+  <!-- 갤러리 라이트박스 -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lightbox__close" aria-label="닫기">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="이전 사진">&#8249;</button>
+    <img class="lightbox__img" alt="" />
+    <button class="lightbox__nav lightbox__nav--next" aria-label="다음 사진">&#8250;</button>
+    <div class="lightbox__count"></div>
+  </div>
+
+  <button id="bgm-toggle" class="bgm" hidden aria-label="배경음악 켜기/끄기">♪</button>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
