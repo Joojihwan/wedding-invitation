@@ -90,13 +90,20 @@
         { role: label + " 아버지", name: s.father.name, phone: s.father.phone, hide: s.father.deceased },
         { role: label + " 어머니", name: s.mother.name, phone: s.mother.phone, hide: s.mother.deceased },
       ];
-      return '<div class="contact-group"><h4>' + label + "측</h4>" + list.filter(function (p) { return p.phone && !p.hide; }).map(function (p) {
+      list = list.filter(function (p) { return p.phone && !p.hide; });
+      if (!list.length) return "";
+      return '<div class="contact-group"><h4>' + label + "측</h4>" + list.map(function (p) {
         return '<div class="contact-row"><span><small>' + esc(p.role) + "</small>" + esc(p.name) + "</span>" +
           '<span class="icons"><a href="tel:' + tel(p.phone) + '" aria-label="' + esc(p.name) + ' 전화">✆</a>' +
           '<a href="sms:' + tel(p.phone) + '" aria-label="' + esc(p.name) + ' 문자">✉</a></span></div>';
       }).join("") + "</div>";
     };
-    $("#contact-body").innerHTML = rows("신랑", W.groom) + rows("신부", W.bride);
+    var contacts = rows("신랑", W.groom) + rows("신부", W.bride);
+    if (!contacts) {
+      $("#open-contact").remove();
+      return;
+    }
+    $("#contact-body").innerHTML = contacts;
 
     var modal = $("#contact-modal");
     $("#open-contact").addEventListener("click", function () { modal.hidden = false; });
@@ -236,7 +243,19 @@
 
   /* ---------- 마음 전하실 곳 ---------- */
   function renderAccount() {
+    var filled = function (list) {
+      return (list || []).filter(function (a) { return a.bank && a.number; });
+    };
+    var groom = filled(W.accounts.groom), bride = filled(W.accounts.bride);
+    if (!groom.length && !bride.length) {
+      $("#account").hidden = true;
+      // 배경색이 번갈아 나오도록 다음 섹션 톤을 맞춤
+      $("#share").classList.remove("section--tint");
+      return;
+    }
+
     var group = function (label, list) {
+      if (!list.length) return "";
       return '<div class="acc reveal"><button class="acc__head" aria-expanded="false">' + label + '</button>' +
         '<div class="acc__body"><div class="acc__inner">' + list.map(function (a) {
           var full = a.bank + " " + a.number;
@@ -251,7 +270,7 @@
     $("#account").innerHTML =
       '<p class="eyebrow reveal">Account</p><h2 class="title reveal">마음 전하실 곳</h2>' +
       '<p class="account__msg reveal">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>' +
-      group("신랑측 계좌번호", W.accounts.groom) + group("신부측 계좌번호", W.accounts.bride);
+      group("신랑측 계좌번호", groom) + group("신부측 계좌번호", bride);
 
     $("#account").addEventListener("click", function (e) {
       var head = e.target.closest(".acc__head");
@@ -268,7 +287,8 @@
   function renderShare() {
     $("#share").innerHTML =
       '<p class="eyebrow reveal">Share</p><h2 class="title reveal">청첩장 공유하기</h2>' +
-      '<div class="share reveal"><button class="btn btn--block btn--kakao" id="share-kakao">카카오톡으로 공유하기</button>' +
+      '<div class="share reveal">' +
+      (W.kakao && W.kakao.jsKey ? '<button class="btn btn--block btn--kakao" id="share-kakao">카카오톡으로 공유하기</button>' : "") +
       '<button class="btn btn--block" id="share-link">링크 복사하기</button></div>';
 
     var url = W.siteUrl || location.href;
@@ -276,6 +296,8 @@
     var desc = D.y + "년 " + D.m + "월 " + D.d + "일 " + WEEK[D.w] + "요일 " + timeText() + "\n" + W.venue.name;
 
     $("#share-link").addEventListener("click", function () { copy(url, "링크가 복사되었습니다"); });
+    if (!(W.kakao && W.kakao.jsKey)) return;
+
     $("#share-kakao").addEventListener("click", function () {
       if (window.Kakao && Kakao.isInitialized()) {
         Kakao.Share.sendDefault({
@@ -295,13 +317,11 @@
       }
     });
 
-    if (W.kakao && W.kakao.jsKey) {
-      var s = document.createElement("script");
-      s.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js";
-      s.crossOrigin = "anonymous";
-      s.onload = function () { if (!Kakao.isInitialized()) Kakao.init(W.kakao.jsKey); };
-      document.head.appendChild(s);
-    }
+    var s = document.createElement("script");
+    s.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js";
+    s.crossOrigin = "anonymous";
+    s.onload = function () { if (!Kakao.isInitialized()) Kakao.init(W.kakao.jsKey); };
+    document.head.appendChild(s);
   }
 
   /* ---------- BGM ---------- */
