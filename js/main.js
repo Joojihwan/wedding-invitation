@@ -203,17 +203,23 @@
   /* ---------- 오시는 길 ---------- */
   function renderLocation() {
     var v = W.venue;
-    var q = encodeURIComponent(v.name);
-    var naver = "https://map.naver.com/p/search/" + encodeURIComponent(v.address);
-    var kakao = "https://map.kakao.com/link/to/" + encodeURIComponent(v.name) + "," + v.lat + "," + v.lng;
-    var tmap = "tmap://route?goalname=" + q + "&goalx=" + v.lng + "&goaly=" + v.lat;
+    var hasCoord = v.lat != null && v.lng != null;
+    var query = encodeURIComponent(v.mapQuery || v.name);
+    var naver = "https://map.naver.com/p/search/" + query;
+    var kakao = hasCoord
+      ? "https://map.kakao.com/link/to/" + encodeURIComponent(v.name) + "," + v.lat + "," + v.lng
+      : "https://map.kakao.com/link/search/" + query;
+    var tmap = hasCoord
+      ? "tmap://route?goalname=" + encodeURIComponent(v.name) + "&goalx=" + v.lng + "&goaly=" + v.lat
+      : "tmap://search?name=" + query;
+    var embedQ = hasCoord ? v.lat + "," + v.lng : query;
 
     $("#location").innerHTML =
       '<div class="reveal"><p class="eyebrow">Location</p><h2 class="title">오시는 길</h2>' +
       '<p class="venue__name">' + esc(v.name) + " " + esc(v.hall) + "</p>" +
       '<p class="venue__addr">' + esc(v.address) + (v.tel ? "<br>Tel. " + esc(v.tel) : "") + "</p></div>" +
       '<iframe class="map" loading="lazy" title="예식장 지도" referrerpolicy="no-referrer-when-downgrade" ' +
-      'src="https://maps.google.com/maps?q=' + v.lat + "," + v.lng + '&z=16&hl=ko&output=embed"></iframe>' +
+      'src="https://maps.google.com/maps?q=' + embedQ + '&z=16&hl=ko&output=embed"></iframe>' +
       '<div class="map-links">' +
       '<a class="btn" href="' + naver + '" target="_blank" rel="noopener">네이버 지도</a>' +
       '<a class="btn" href="' + kakao + '" target="_blank" rel="noopener">카카오맵</a>' +

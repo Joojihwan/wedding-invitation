@@ -8,16 +8,16 @@ window.WEDDING = {
   siteUrl: "https://joojihwan.github.io/wedding-invitation/",
 
   groom: {
-    name: "김민준",
-    firstName: "민준",
+    name: "주지환",
+    firstName: "지환",
     relation: "장남",
     phone: "010-1234-5678",
-    father: { name: "김영호", phone: "010-1111-2222", deceased: false },
+    father: { name: "주영호", phone: "010-1111-2222", deceased: false },
     mother: { name: "박미경", phone: "010-3333-4444", deceased: false },
   },
   bride: {
-    name: "이서연",
-    firstName: "서연",
+    name: "이희연",
+    firstName: "희연",
     relation: "장녀",
     phone: "010-8765-4321",
     father: { name: "이정훈", phone: "010-5555-6666", deceased: false },
@@ -25,19 +25,21 @@ window.WEDDING = {
   },
 
   // 예식 일시 (24시간제, 한국 시간)
-  date: "2027-05-15T12:30:00+09:00",
+  date: "2027-05-02T14:30:00+09:00",
 
   venue: {
-    name: "라온웨딩홀",
-    hall: "3층 그랜드홀",
-    address: "서울특별시 강남구 테헤란로 123",
-    tel: "02-123-4567",
-    lat: 37.5045,
-    lng: 127.049,
+    name: "수원파티웨딩유",
+    hall: "아모르홀",
+    address: "경기 수원시 권선구 세화로 218",
+    tel: "",
+    // 지도 검색어. 좌표(lat, lng)를 넣으면 좌표가 우선 사용되고 티맵 길안내가 정확해집니다.
+    mapQuery: "수원 파티웨딩유",
+    lat: null,
+    lng: null,
     transport: [
-      { title: "지하철", lines: ["2호선 · 수인분당선 선릉역 5번 출구 도보 5분"] },
-      { title: "버스", lines: ["간선 146, 341, 360 · 지선 4412", "‘선릉역’ 정류장 하차"] },
-      { title: "자가용", lines: ["건물 지하 주차장 2시간 무료", "주차 공간이 협소하니 대중교통을 이용해 주세요"] },
+      { title: "지하철", lines: ["1호선 · 수인분당선 수원역 도보 약 10분", "수원역에서 안산 방향, 서수원자동차검사소 옆"] },
+      { title: "셔틀버스", lines: ["수원역 지하상가 13번 출구 앞에서 수시 운행"] },
+      { title: "자가용", lines: ["700여 대 동시 주차 가능, 종일 무료 주차"] },
     ],
   },
 
@@ -48,7 +50,7 @@ window.WEDDING = {
   },
 
   // 대표 사진 & 갤러리 (images 폴더에 사진을 넣고 경로를 바꾸세요)
-  coverImage: "images/cover.svg",
+  coverImage: "images/cover.jpg",
   gallery: [
     "images/gallery/01.svg",
     "images/gallery/02.svg",
@@ -68,12 +70,12 @@ window.WEDDING = {
   // 마음 전하실 곳
   accounts: {
     groom: [
-      { role: "신랑", name: "김민준", bank: "국민은행", number: "123456-01-234567", kakaopay: "" },
-      { role: "신랑 아버지", name: "김영호", bank: "신한은행", number: "110-123-456789" },
+      { role: "신랑", name: "주지환", bank: "국민은행", number: "123456-01-234567", kakaopay: "" },
+      { role: "신랑 아버지", name: "주영호", bank: "신한은행", number: "110-123-456789" },
       { role: "신랑 어머니", name: "박미경", bank: "우리은행", number: "1002-123-456789" },
     ],
     bride: [
-      { role: "신부", name: "이서연", bank: "카카오뱅크", number: "3333-01-2345678", kakaopay: "" },
+      { role: "신부", name: "이희연", bank: "카카오뱅크", number: "3333-01-2345678", kakaopay: "" },
       { role: "신부 아버지", name: "이정훈", bank: "농협은행", number: "302-1234-5678-91" },
       { role: "신부 어머니", name: "최은숙", bank: "하나은행", number: "123-456789-01234" },
     ],

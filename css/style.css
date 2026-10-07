@@ -85,7 +85,7 @@ a { color: inherit; }
   color: var(--muted);
 }
 .cover__date strong { display: block; font-size: 34px; font-weight: 400; color: var(--ink); letter-spacing: 0.08em; }
-.cover__photo { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.cover__photo { width: 100%; height: auto; }
 .cover__names {
   font-family: var(--serif);
   font-size: 22px;
