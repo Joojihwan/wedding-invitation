@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
 </head>
 <body>
   <div id="petals" aria-hidden="true"></div>
@@ -56,7 +56,8 @@
   <button id="bgm-toggle" class="bgm" hidden aria-label="배경음악 켜기/끄기">♪</button>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+  <!-- css/js 수정 후 배포할 때 ?v= 숫자를 올리면 방문자 브라우저 캐시가 갱신됩니다 -->
+  <script src="js/config.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>
