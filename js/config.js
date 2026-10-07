@@ -7,21 +7,22 @@ window.WEDDING = {
   // 배포 URL (공유 기능에 사용)
   siteUrl: "https://joojihwan.github.io/wedding-invitation/",
 
+  // phone 을 비워두면 연락처가 표시되지 않습니다 (모두 비면 연락하기 버튼 숨김)
   groom: {
     name: "주지환",
     firstName: "지환",
     relation: "장남",
-    phone: "010-1234-5678",
-    father: { name: "주현술", phone: "010-1111-2222", deceased: false },
-    mother: { name: "서경애", phone: "010-3333-4444", deceased: false },
+    phone: "",
+    father: { name: "주현술", phone: "", deceased: false },
+    mother: { name: "서경애", phone: "", deceased: false },
   },
   bride: {
     name: "이희연",
     firstName: "희연",
     relation: "장녀",
-    phone: "010-8765-4321",
-    father: { name: "이한용", phone: "010-5555-6666", deceased: false },
-    mother: { name: "은지현", phone: "010-7777-8888", deceased: false },
+    phone: "",
+    father: { name: "이한용", phone: "", deceased: false },
+    mother: { name: "은지현", phone: "", deceased: false },
   },
 
   // 예식 일시 (24시간제, 한국 시간)
@@ -67,22 +68,22 @@ window.WEDDING = {
   ],
   galleryPreviewCount: 9,
 
-  // 마음 전하실 곳
+  // 마음 전하실 곳 (bank, number 를 채운 항목만 표시. 모두 비어 있으면 섹션 전체가 숨겨집니다)
   accounts: {
     groom: [
-      { role: "신랑", name: "주지환", bank: "국민은행", number: "123456-01-234567", kakaopay: "" },
-      { role: "신랑 아버지", name: "주현술", bank: "신한은행", number: "110-123-456789" },
-      { role: "신랑 어머니", name: "서경애", bank: "우리은행", number: "1002-123-456789" },
+      { role: "신랑", name: "주지환", bank: "", number: "", kakaopay: "" },
+      { role: "신랑 아버지", name: "주현술", bank: "", number: "" },
+      { role: "신랑 어머니", name: "서경애", bank: "", number: "" },
     ],
     bride: [
-      { role: "신부", name: "이희연", bank: "카카오뱅크", number: "3333-01-2345678", kakaopay: "" },
-      { role: "신부 아버지", name: "이한용", bank: "농협은행", number: "302-1234-5678-91" },
-      { role: "신부 어머니", name: "은지현", bank: "하나은행", number: "123-456789-01234" },
+      { role: "신부", name: "이희연", bank: "", number: "", kakaopay: "" },
+      { role: "신부 아버지", name: "이한용", bank: "", number: "" },
+      { role: "신부 어머니", name: "은지현", bank: "", number: "" },
     ],
   },
 
   // 카카오톡 공유: https://developers.kakao.com 에서 앱 생성 후 JavaScript 키 입력
-  // (플랫폼 > Web 에 GitHub Pages 도메인 등록 필요). 비워두면 버튼이 링크 공유로 동작합니다.
+  // (플랫폼 > Web 에 GitHub Pages 도메인 등록 필요). 비워두면 카카오톡 공유 버튼이 숨겨집니다.
   kakao: {
     jsKey: "",
     shareImage: "images/og.jpg",
